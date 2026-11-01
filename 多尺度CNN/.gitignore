@@ -1,0 +1,11 @@
+weights/
+.venv/
+__pycache__/
+*.pyc
+cache/
+datasets/
+GOPRO_Large/
+*.zip
+*.whl
+*.pt
+*.pth

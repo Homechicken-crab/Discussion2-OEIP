@@ -1,17 +1,21 @@
 # 讨论2：单幅运动模糊图像复原
 
-**当前阶段：已完成首轮 MATLAB 实图复原（4229fb4）及第二轮第 3 张建筑图的参数/多区域排查。输入为 4 张 1280×720 RGB 图像；未计算图像质量指标，未制作 PPT。**
+**当前阶段：保留原4图MATLAB维纳实验，新增作者GOPRO_L1多尺度CNN预训练推理；已在固定6对GoPro测试样本上实际运行CNN与MATLAB维纳，保存原尺寸输出及四项对比。未计算评价指标，未制作PPT。**
 
 题目：对手机拍摄物体时因快速运动造成的图像模糊进行复原。至少研究并实现一种算法；展示涵盖研究目标、算法方案、验证结果、结论总结。
 
-本项目采用“GPT 指导、Codex 执行与记录、GPT 审查”的协作方式。**输入是一张现成的运动模糊图片，不安排实拍。**
+本项目采用“GPT 指导、Codex 执行与记录、GPT 审查”的协作方式。**采用现有模糊图片和官方GoPro配对测试样本，不安排实拍。**
 
 ## 当前实现与结果
 
-正式 MATLAB 项目为 [MotionDeblur_Wiener](MotionDeblur_Wiener)。使用 im2double → fspecial('motion',LEN,THETA) → RGB 逐通道 edgetaper 和 deconvwnr → 限幅保存。保持 1280×720 原分辨率，不做额外锐化或对比度增强。THETA 按 MATLAB 的相对水平逆时针约定记录。参数由观察候选图人工辅助选择，未采用质量分数自动排名。
+新增 [多尺度CNN](多尺度CNN/README.md)：Nah等人CVPR2017方法对应的作者PyTorch实现及GOPRO_L1单精度预训练权重推理，没有自行训练。GoPro是数据集；NAFNet是组员已完成的独立方案，本次未处理其模型或项目。6对固定样本、来源/配置/哈希、实际环境与运行命令见该目录说明；[四项对比](多尺度CNN/results/comparisons)展示GoPro模糊图、MATLAB维纳、CNN和sharp参考。
 
-- [首轮结果](MotionDeblur_Wiener/results)与[首轮参数](MotionDeblur_Wiener/parameters.csv)保留不变，基线提交为 [4229fb4](https://github.com/Homechicken-crab/Discussion2-OEIP/commit/4229fb479523ed39e1ff9b5ad0612f91ee2c6503)。
-- [第二轮输出与观察](MotionDeblur_Wiener/results_round2_image3/observations.md)：两条计算路径检查通过；粗搜194组、细搜75组，保留单位核控制与两组代表候选。三处固定局部均从同一整图结果裁取。当前方案改善仍有限，不能据此确定存在空间变化模糊。
+旧MotionDeblur_Wiener目录已完整改名为维纳滤波，没有保留重复旧目录；原4图未标为GoPro。
+
+正式 MATLAB 项目为 [维纳滤波](维纳滤波)。使用 im2double → fspecial('motion',LEN,THETA) → RGB 逐通道 edgetaper 和 deconvwnr → 限幅保存。保持 1280×720 原分辨率，不做额外锐化或对比度增强。THETA 按 MATLAB 的相对水平逆时针约定记录。参数由观察候选图人工辅助选择，未采用质量分数自动排名。
+
+- [首轮结果](维纳滤波/results)与[首轮参数](维纳滤波/parameters.csv)保留不变，基线提交为 [4229fb4](https://github.com/Homechicken-crab/Discussion2-OEIP/commit/4229fb479523ed39e1ff9b5ad0612f91ee2c6503)。
+- [第二轮输出与观察](维纳滤波/results_round2_image3/observations.md)：两条计算路径检查通过；粗搜194组、细搜75组，保留单位核控制与两组代表候选。三处固定局部均从同一整图结果裁取。当前方案改善仍有限，不能据此确定存在空间变化模糊。
 - 原图在 origin_image，已有 NAFNet 结果在 nafnet_reference；NAFNet 仅供视觉对照，不是清晰真值。初期提出的逆滤波、CLS、合成评价不属于本轮已执行内容。
 
 ## 阅读顺序
@@ -26,13 +30,14 @@
 ## 文件组织
 
 ```text
-MotionDeblur_Wiener/  当前MATLAB项目：两个独立脚本、输入、NAFNet对照、分轮结果
+维纳滤波/          MATLAB：原4图脚本和分轮结果；新增wiener_gopro.m与results_gopro
+多尺度CNN/         作者模型代码、配置、固定6对样本、CNN输出及四项对比（权重忽略）
 docs/                课程对应、方法说明、协作提示词及历史计划
-src/                 早期Python准备代码，不是当前正式复原入口
-configs/             早期Python参数示例，不供MATLAB读取
+src/                 早期Python准备代码；新CNN入口在多尺度CNN/infer.py
+configs/             早期Python参数示例，不供MATLAB或CNN读取
 data/private/        早期Python私有输入占位，不供MATLAB读取
-data/public/         早期Python公开副本占位；MATLAB输入在其项目内
-results/             早期占位目录；实际结果在MATLAB项目内
+data/public/         早期Python公开副本占位；GoPro输入在多尺度CNN/samples
+results/             早期占位目录；实际结果在两个方案各自目录
 sources/courseware/  用户提供的两章课件，供 GPT 对照审查
 sources/assignment.png  用户提供的题目截图
 sources/local/       完整提取文本与转换中间文件，仅本地保存
@@ -44,7 +49,7 @@ validation/          代码准备状态与诊断记录，不是正式实验结�
 
 ## MATLAB 运行方式
 
-打开 MotionDeblur_Wiener/wiener_restore.m，采用 round2 模式可独立生成本轮代表结果，不依赖先运行搜索脚本。search_motion_parameters.m 的 stage 可选择 consistency、coarse、fine；一致性模式应先运行搜索脚本，再运行正式脚本的一致性模式。MATLAB R2022a + Image Processing Toolbox 11.5 已实际使用。
+打开 维纳滤波/wiener_restore.m，采用 round2 模式可独立生成本轮代表结果，不依赖先运行搜索脚本。search_motion_parameters.m 的 stage 可选择 consistency、coarse、fine；一致性模式应先运行搜索脚本，再运行正式脚本的一致性模式。MATLAB R2022a + Image Processing Toolbox 11.5 已实际使用。新增GoPro实验直接运行维纳滤波/wiener_gopro.m（默认restore），使用同级多尺度CNN内固定样本，输出和参数独立保存到results_gopro。
 
 大量候选及一致性检查的临时数组留在项目 temp_candidates/，不提交 GitHub。首轮与第二轮正式结果分别保存；均未计算 PSNR、SSIM、NIQE、CPBD 等评价指标，也没有合成验证成绩。
 

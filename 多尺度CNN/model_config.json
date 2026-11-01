@@ -1,0 +1,18 @@
+{
+  "model": "MSResNet",
+  "rgb_range": 255,
+  "n_scales": 3,
+  "n_resblocks": 19,
+  "n_feats": 64,
+  "kernel_size": 5,
+  "gaussian_pyramid": true,
+  "blur_key": "blur_gamma",
+  "precision": "single",
+  "amp": false,
+  "checkpoint": "weights/GOPRO_L1/models/model-1000.pt",
+  "checkpoint_sha256": "8d02a04244f0f54ba645834b6726eafa4348e88df870a31a8ccb037e63ea0e49",
+  "official_repository": "https://github.com/SeungjunNah/DeepDeblur-PyTorch",
+  "official_commit": "e92dc7c3337127887da617ffe819b49cb022fd81",
+  "weights_url": "https://drive.google.com/file/d/1AfZhyUXEA8_UdZco9EdtpWjTBAb8BbWv/view",
+  "archive_sha256": "df564f97b31fa337eaf59b310190a8660482d5b86812f0b63b2a3a10a82bfdb8"
+}

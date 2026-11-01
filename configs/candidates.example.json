@@ -7,5 +7,5 @@
   "ks": [0.001, 0.003, 0.01],
   "pad": 64,
   "linear_light": true,
-  "note": "Four real inputs are now in MotionDeblur_Wiener/origin_image. This is a historical Python example; its clockwise angle and reflection boundary are not the MATLAB conventions. Actual MATLAB parameters are in the project scripts and round-specific parameter tables."
+  "note": "Four real inputs are now in 维纳滤波/origin_image. This is a historical Python example; its clockwise angle and reflection boundary are not the MATLAB conventions. Actual MATLAB parameters are in the project scripts and round-specific parameter tables."
 }

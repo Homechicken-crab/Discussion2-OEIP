@@ -1,0 +1,52 @@
+{
+  "python": "3.12.6",
+  "torch": "2.11.0+cu128",
+  "numpy": "2.5.4",
+  "cuda_runtime": "12.8",
+  "device": "cuda",
+  "checkpoint_sha256": "8d02a04244f0f54ba645834b6726eafa4348e88df870a31a8ccb037e63ea0e49",
+  "generator_strict_load": true,
+  "loaded_tensor_count": 244,
+  "parameter_count": 11721321,
+  "rgb_range": 255,
+  "precision": "float32",
+  "amp": false,
+  "tf32": false,
+  "reference_images_read_by_inference": false,
+  "samples": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "input_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "output_sha256": "79c3154e99b85a8c5421f03392858aae35b92fba1ea5deb3acf648b2d35dcb93",
+      "width": 1280,
+      "height": 720,
+      "pyramid_shapes": [
+        [
+          720,
+          1280,
+          3
+        ],
+        [
+          360,
+          640,
+          3
+        ],
+        [
+          180,
+          320,
+          3
+        ]
+      ],
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 3.5830426000757143,
+      "processing_seconds_including_png": 3.9545948000159115,
+      "peak_allocated_gpu_bytes": 814721024
+    }
+  ],
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "available_gpu_bytes": 7402946560,
+  "total_gpu_bytes": 8585216000
+}
