@@ -1,13 +1,21 @@
 {
   "date": "2026-11-01",
-  "stage": "preparation_and_method_discussion",
-  "input_mode": "one_existing_motion_blurred_image_no_photography_required",
-  "actual_input_received": false,
+  "stage": "MATLAB_image3_round2_parameter_and_model_diagnostics_completed",
+  "input_mode": "four_existing_1280x720_RGB_images_no_photography_required",
+  "actual_input_received": true,
   "course_notes_prepared": true,
-  "proposed_main_method": "manually_assisted_motion_PSF_estimation_and_constant_K_Wiener_deconvolution",
-  "baseline": "threshold_truncated_inverse_filter",
-  "formal_experiments_run": false,
+  "main_method": "manually_assisted_motion_PSF_estimation_and_MATLAB_deconvwnr",
+  "baseline": "MATLAB_Wiener_first_round_commit_4229fb4",
+  "formal_experiments_run": true,
   "formal_metrics_available": false,
   "final_ppt_created": false,
-  "next_step": "Guiding GPT reviews the plan; inspect the actual image when supplied before choosing ROI and parameter ranges."
+  "active_implementation": "MotionDeblur_Wiener",
+  "round2_output": "MotionDeblur_Wiener/results_round2_image3",
+  "synthetic_validation_run": false,
+  "round2_consistency_checks_passed": true,
+  "round2_coarse_evaluations": 194,
+  "round2_fine_evaluations": 75,
+  "round2_unique_parameter_triplets": 257,
+  "round2_observations": "MotionDeblur_Wiener/results_round2_image3/observations.md",
+  "next_step": "Inspect isolated edge/trail directions and shapes before deciding whether to revise the PSF model; current visual evidence does not establish spatially varying blur."
 }

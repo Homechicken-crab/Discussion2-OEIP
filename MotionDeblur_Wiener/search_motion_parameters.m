@@ -1,86 +1,99 @@
-%% 1. 读取路径，集中设置人工搜索参数
+%% 1. 第3张建筑图：一致性检查、扩大粗搜与人工细搜
 clear; clc;
 root = fileparts(mfilename('fullpath'));
-image_ids = [3 1 2 4];              % 第3张建筑图优先；可只选一张缩短搜索时间
-stage = 'fine';                     % 'coarse' 粗搜；'fine' 每张图的邻域细搜
-coarse_LEN = [3 5 9 13 17 25];
-coarse_THETA = 0:15:165;            % MATLAB：相对水平逆时针，方向轴以180度为周期
-% 下面各元胞对应图1～4；看过粗搜全图和局部后人工缩小范围。
-fine_LEN = {[3 5 7], [5 7 9], [3 5 7], [3 4 5]};
-fine_THETA = {[175 0 5], [130 135 140], [0 10 20], [45 55 65]};
-fine_NSR = [0.001 0.003 0.01];
-% 固定局部坐标 [左列 上行 宽 高]；采用整数索引，恰好取宽×高像素。
-roi = [390 345 240 160; ...         % 图1：长椅、树木及路面
-       530 210 240 160; ...         % 图2：树干、石块与背景
-       600 115 240 160; ...         % 图3：窗框与建筑立面
-       330 210 240 160];            % 图4：店面、走廊边缘
-out = fullfile(root, 'temp_candidates', stage);
+stage = 'fine';                    % 'consistency'、'coarse' 或 'fine'
+coarse_LEN = [1 3 5 7 9 13 17 25 33];
+coarse_THETA = 0:15:165;
+coarse_NSR = [0.01 0.03];
+% 细搜范围在查看粗搜拼图后人工修改；不按清晰度分数排名。
+fine_LEN = [3 5 7];
+fine_THETA = [0 5 10 15 20];
+fine_NSR = [0.003 0.01 0.03 0.05 0.1];
+% [左列 上行 宽 高]，全部为整图复原后裁剪；不进行局部独立反卷积。
+roi = [600 115 240 160; 900 280 240 160; 400 380 240 160];
+roi_names = {'窗框和墙面', '另一处建筑边缘', '树枝细节'};
+out = fullfile(root, 'temp_candidates', 'round2', stage);
 if ~exist(out, 'dir'), mkdir(out); end
-fprintf('MATLAB %s；阶段 %s；参数由人工观察候选图选择。\n', version, stage);
+I = im2double(imread(fullfile(root, 'origin_image', '3.png')));
+assert(size(I,3) == 3);
+if strcmp(stage, 'consistency')
+    LEN_values = [1 5]; THETA_values = 10; NSR_values = 0.01;
+elseif strcmp(stage, 'coarse')
+    LEN_values = coarse_LEN; THETA_values = coarse_THETA; NSR_values = coarse_NSR;
+else
+    assert(strcmp(stage, 'fine'), 'stage取值错误。');
+    LEN_values = fine_LEN; THETA_values = fine_THETA; NSR_values = fine_NSR;
+end
+all_parameters = zeros(0,3);
+fprintf('MATLAB %s；图3；阶段 %s；全分辨率RGB；先整图处理再裁剪。\n', version, stage);
 
-%% 2. 按图、长度和噪信比生成候选；全分辨率RGB分别复原
-for id = image_ids
-    if strcmp(stage, 'coarse')
-        LEN_values = coarse_LEN; THETA_values = coarse_THETA; NSR_values = 0.003;
-    else
-        LEN_values = fine_LEN{id}; THETA_values = fine_THETA{id}; NSR_values = fine_NSR;
+%% 2. 构建PSF，RGB逐通道edgetaper和deconvwnr，与正式脚本一致
+for LEN = LEN_values
+    angles = THETA_values;
+    if LEN == 1
+        angles = 0;                % 单位核与方向无关，只算一次，作为控制项
     end
-    I = im2double(imread(fullfile(root, 'origin_image', sprintf('%d.png', id))));
-    rows = roi(id, 2) + (0:roi(id, 4)-1);
-    cols = roi(id, 1) + (0:roi(id, 3)-1);
-    image_out = fullfile(out, sprintf('image_%d', id));
-    if ~exist(image_out, 'dir'), mkdir(image_out); end
-    for LEN = LEN_values
-        for NSR = NSR_values
-            full_images = cell(1, numel(THETA_values)+1);
-            crop_images = cell(size(full_images));
-            labels = cell(size(full_images));
-            full_images{1} = I;
-            crop_images{1} = I(rows, cols, :);
-            labels{1} = '原始模糊图';
-            for k = 1:numel(THETA_values)
-                THETA = mod(THETA_values(k), 180);
-                PSF = fspecial('motion', LEN, THETA);
-                J = zeros(size(I));
-                for c = 1:3
-                    tapered = edgetaper(I(:, :, c), PSF);
-                    J(:, :, c) = deconvwnr(tapered, PSF, NSR);
-                end
-                % 仅作PNG显示范围裁剪；不锐化、不拉伸对比度、不改变分辨率。
-                J = min(max(J, 0), 1);
-                full_images{k+1} = J;
-                crop_images{k+1} = J(rows, cols, :);
-                labels{k+1} = sprintf('THETA=%g°', THETA);
-                fprintf('图%d：LEN=%g THETA=%g NSR=%g\n', id, LEN, THETA, NSR);
+    for NSR = NSR_values
+        crops = cell(3, numel(angles)+1);
+        labels = cell(1, numel(angles)+1);
+        labels{1} = {'原始模糊图', '未处理'};
+        for r = 1:3
+            rows = roi(r,2)+(0:roi(r,4)-1); cols = roi(r,1)+(0:roi(r,3)-1);
+            crops{r,1} = I(rows,cols,:);
+        end
+        for k = 1:numel(angles)
+            THETA = mod(angles(k),180); % 相对水平逆时针，方向轴以180度为周期
+            PSF = fspecial('motion',LEN,THETA);
+            % 两个R2022a接口均不接受标量核；用等价3×3中心脉冲表示LEN=1。
+            if numel(PSF)==1, PSF = [0 0 0;0 PSF 0;0 0 0]; end
+            J = zeros(size(I));
+            for c = 1:3
+                tapered = edgetaper(I(:,:,c),PSF);
+                J(:,:,c) = deconvwnr(tapered,PSF,NSR);
             end
+            assert(isequal(size(J),size(I)) && all(isfinite(J(:))));
+            if LEN==1, assert(all(abs(J(:)-I(:)/(1+NSR))<1e-12)); end
+            if strcmp(stage,'consistency')
+                search_before_clip = J;
+                save(fullfile(out,sprintf('search_L%g_float.mat',LEN)),'search_before_clip');
+            end
+            J = min(max(J,0),1);   % 仅裁至PNG表示范围，无额外锐化或对比度处理
+            if strcmp(stage,'consistency')
+                imwrite(J,fullfile(out,sprintf('search_L%g.png',LEN)));
+            end
+            for r = 1:3
+                rows = roi(r,2)+(0:roi(r,4)-1); cols = roi(r,1)+(0:roi(r,3)-1);
+                crops{r,k+1} = J(rows,cols,:);
+            end
+            labels{k+1} = {sprintf('LEN=%g  THETA=%g°',LEN,THETA),sprintf('NSR=%g',NSR)};
+            all_parameters(end+1,:) = [LEN THETA NSR];
+            fprintf('LEN=%g THETA=%g NSR=%g\n',LEN,THETA,NSR);
+        end
+        if strcmp(stage,'consistency'), continue; end
 
-            %% 3. 导出同尺度全图拼图与固定位置局部拼图
-            for view = 1:2
-                if view == 1
-                    pictures = full_images; suffix = 'full';
-                else
-                    pictures = crop_images; suffix = 'crop';
-                end
-                ncol = 4; nrow = ceil(numel(pictures)/ncol);
-                f = figure('Visible', 'off', 'Color', 'w', ...
-                    'Position', [30 30 1600 280*nrow+70]);
-                for k = 1:numel(pictures)
-                    row = ceil(k/ncol); col = mod(k-1, ncol)+1;
-                    ax = axes('Parent', f, 'Position', ...
-                        [0.025+(col-1)*0.245, 0.04+(nrow-row)*0.75/nrow, 0.22, 0.67/nrow]);
-                    imshow(pictures{k}, 'Parent', ax);
-                    title(ax, labels{k}, 'FontName', 'Microsoft YaHei', 'FontSize', 11, 'Interpreter', 'none');
-                end
-                annotation(f, 'textbox', [0.02 0.87 0.96 0.11], 'EdgeColor', 'none', ...
-                    'String', {sprintf('图%d | %s | LEN=%g px，NSR=%g | 人工辅助搜索', id, stage, LEN, NSR), ...
-                    sprintf('固定ROI=[%d %d %d %d]；角度相对水平逆时针', roi(id, :))}, ...
-                    'HorizontalAlignment', 'center', 'FontName', 'Microsoft YaHei', 'FontSize', 14);
-                name = sprintf('L%g_N%g_%s.png', LEN, NSR, suffix);
-                drawnow;
-                exportgraphics(f, fullfile(image_out, name), 'Resolution', 110);
-                close(f);
+        %% 3. 只导出三个固定局部的候选拼图；全部候选留在临时目录
+        for r = 1:3
+            ncol = 4; nrow = ceil(size(crops,2)/ncol);
+            f = figure('Visible','off','Color','w','Position',[30 30 1800 320*nrow+120]);
+            for k = 1:size(crops,2)
+                row = ceil(k/ncol); col = mod(k-1,ncol)+1;
+                ax = axes('Parent',f,'Position', ...
+                    [0.025+(col-1)*0.245,0.04+(nrow-row)*0.75/nrow,0.22,0.64/nrow]);
+                imshow(crops{r,k},'Parent',ax);
+                title(ax,labels{k},'FontName','Microsoft YaHei','FontSize',10,'Interpreter','none');
             end
+            note = '';
+            if LEN == 1, note = ' | LEN=1为接近无运动核的控制，不代表去除拖影'; end
+            annotation(f,'textbox',[0.02 0.87 0.96 0.11],'EdgeColor','none', ...
+                'String',{sprintf('图3 | %s | %s | LEN=%g NSR=%g%s',stage,roi_names{r},LEN,NSR,note), ...
+                sprintf('整图复原后裁剪 ROI=[%d %d %d %d]；THETA相对水平逆时针',roi(r,:))}, ...
+                'HorizontalAlignment','center','FontName','Microsoft YaHei','FontSize',13);
+            drawnow;
+            exportgraphics(f,fullfile(out,sprintf('ROI%d_L%g_N%g.png',r,LEN,NSR)),'Resolution',110);
+            close(f);
         end
     end
 end
-fprintf('候选已保存到 temp_candidates；没有用质量分数自动选参。\n');
+T = array2table(all_parameters,'VariableNames',{'LEN','THETA','NSR'});
+writetable(T,fullfile(out,'search_parameters.csv'));
+fprintf('完成：本阶段实际计算%d组；只作人工比较，不计算图像评价指标。\n',height(T));

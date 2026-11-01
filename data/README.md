@@ -1,7 +1,7 @@
 # 图像输入
 
-当前尚未收到待处理图像。不需要安排实拍。
+已收到 4 张现成的模糊图片，均为 1280×720 RGB，位于 ../MotionDeblur_Wiener/origin_image/。已有 NAFNet 对照位于 ../MotionDeblur_Wiener/nafnet_reference/，不作为清晰真值。不需要安排实拍。
 
-`private/` 保存原始文件，已被 Git 忽略；`public/` 只放用户决定可公开的图像副本。`src/deblur.py` 的 `input_display.png` 会去除 EXIF，但去元数据不等于去除画面中的私人信息，公开前仍需检查内容。
+这里的 `private/`、`public/` 为早期 Python 准备流程的目录约定，不供当前 MATLAB 脚本读取。正式输入与结果以 MotionDeblur_Wiener 中的文件为准。
 
 不要把题目截图、课件示例或合成图冒充本次手机真实模糊输入。
