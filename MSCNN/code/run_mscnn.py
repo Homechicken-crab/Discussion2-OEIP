@@ -16,7 +16,7 @@ from official_model import data_common
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT.parent / 'data'
-RESULT = ROOT.parent / 'result'
+RESTORED = DATA / 'restored'
 
 
 def sha(path):
@@ -48,7 +48,7 @@ def main():
     # load_state_dict 之外再核对所有已加载张量。
     assert all(torch.equal(value, state['G'][key]) for key, value in model.state_dict().items())
     model.to(device=device, dtype=torch.float32).eval()
-    out = RESULT / 'restored'
+    out = RESTORED
     out.mkdir(parents=True, exist_ok=True)
     record = {'python': platform.python_version(), 'torch': torch.__version__,
               'numpy': np.__version__, 'cuda_runtime': torch.version.cuda,
@@ -94,7 +94,7 @@ def main():
                 entry['peak_allocated_gpu_bytes'] = torch.cuda.max_memory_allocated()
             record['samples'].append(entry)
             print(sample['id'], json.dumps(entry), flush=True)
-    log = RESULT / 'run_record.json'
+    log = DATA / 'run_record.json'
     log.write_text(json.dumps(record, indent=2), encoding='utf-8')
 
 

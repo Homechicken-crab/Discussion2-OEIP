@@ -8,8 +8,10 @@
 
 原加载器无条件导入缺失的 `models/nafnet.py`，导致当前模型也无法加载。新入口只导入完整且匹配的 `nafnet_model.py`，严格加载并逐张量核对664个张量。配置为width32、编码块[2,2,4,8]、中间12块、解码块[2,2,2,2]；不强行使用作者当前GoPro预设[1,1,1,28]/1/[1,1,1,1]。与[作者基础NAFNet](https://github.com/megvii-research/NAFNet/tree/2b4af71ebe098a92a75910c233a3965a3e93ede4)在同配置同权重的小图前向核对一致，详细来源/源码哈希见 `data/source_record.json`。
 
-输入为 `data/samples_manifest.json` 固定的6对GoPro测试样本，沿用 `blur_gamma`，与另外两方案逐文件哈希相同。RGB float32 0–1，不额外做伽马变换；保持原图尺寸，模型内部右/下补零至16倍数后裁回。保留原方案uint8截断量化，无AMP、锐化或对比度增强。sharp仅供对比脚本读取。
+输入为 `data/samples_manifest.json` 固定的6对GoPro测试样本，沿用 `blur_gamma`，与另外两方案逐文件哈希相同。RGB float32 0–1，不额外做伽马变换；保持原图尺寸，模型内部右/下补零至16倍数后裁回。保留原方案uint8截断量化，无AMP、锐化或对比度增强。sharp仅供对比和PSNR评价读取，不作为复原输入。
 
 限制：原权重未记录可核实的公开下载地址及训练时blur/blur_gamma对应关系；原dataset.py只查找名为blur的目录。已核实数值范围/通道/结构/加载匹配，但不声称训练模糊版本已确认。本次明确统一输入blur_gamma；这限制了跨方案效果归因。新机器需从原小组项目复制同一权重并核对哈希。
 
-已先完成单张，再实际推理全部6图。原尺寸PNG在 `result/restored`，本方案整体与固定局部对比在 `result/comparison`，实际耗时、权重核对及配对检查在 `result/run_record.json`。本轮未训练、未计算评价指标、未制作PPT。唯一的三方案总对比位于同级 `MSCNN/result/comparison/all_methods`。
+已实际推理全部6图。原尺寸PNG在 `data/restored`，本方案result只放12张整体/固定局部三项对比PNG；实际耗时、权重核对及配对检查在 `data/run_record.json`。迁移保留原PNG字节，`python code/make_comparisons.py --check-only` 只核对对比图而不改写。总对比统一位于项目根目录 `Result/comparison`。
+
+PSNR由同级MSCNN/code/evaluate_psnr.py统一读取已保存输出计算，不重新推理。全图RGB、峰值255、无裁边/配准/缩放，逐图PSNR再取六图算术平均；表格和图表位于根目录Result/evaluation，计算记录在MSCNN/data/psnr_run_record.json。没有其他新增指标、训练或PPT。

@@ -1,0 +1,5 @@
+Method,Mean_PSNR_dB,Image_count
+Blur_input,27.2466008028,6
+Wiener_Filiter,26.2824086049,6
+MSCNN,31.5477686432,6
+NAFNet,29.5358600949,6

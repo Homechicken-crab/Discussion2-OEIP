@@ -1,7 +1,7 @@
 %% 1. 固定GoPro六样本；沿用已选参数，不读取sharp、不再搜索
 clear; clc;
 base = fileparts(fileparts(mfilename('fullpath')));
-data = fullfile(base,'data'); out = fullfile(base,'result','restored');
+data = fullfile(base,'data'); out = fullfile(data,'restored');
 M = jsondecode(fileread(fullfile(data,'samples_manifest.json')));
 T = readtable(fullfile(data,'parameters.csv'),'TextType','string','Encoding','UTF-8');
 assert(height(T)==numel(M.samples));
@@ -36,7 +36,7 @@ for i = 1:numel(M.samples)
 end
 
 %% 3. 单份运行记录；完整参数另在data/parameters.csv
-fid = fopen(fullfile(base,'result','run_record.json'),'w','n','UTF-8');
+fid = fopen(fullfile(data,'run_record.json'),'w','n','UTF-8');
 assert(fid~=-1); fprintf(fid,'%s',jsonencode(record,'PrettyPrint',true)); fclose(fid);
 
 function digest = file_sha256(path)

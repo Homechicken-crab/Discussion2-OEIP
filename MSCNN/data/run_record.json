@@ -633,7 +633,6 @@
     "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
     "execution_environment": "D:\\codex\\2026-11-01\\xian\\work\\multiscale_env"
   },
-  "metrics_computed": false,
   "ppt_created": false,
   "all_methods_comparison_verification": {
     "whole_image_panels_verified": 30,
@@ -652,5 +651,11 @@
       "GOPR0854_11_00_000051_crops.png",
       "GOPR0854_11_00_000051_overview.png"
     ]
+  },
+  "metrics_computed_during_inference": false,
+  "evaluation": {
+    "metric": "PSNR",
+    "record_project_relative": "MSCNN/data/psnr_run_record.json",
+    "output_directory_project_relative": "Result/evaluation"
   }
 }

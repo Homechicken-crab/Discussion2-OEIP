@@ -5,3 +5,4 @@ Pillow==13.0.0
 scikit-image==0.25.2
 requests==2.34.2
 gdown==6.5.1
+matplotlib==3.11.2

@@ -347,6 +347,11 @@
     "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
     "execution_environment": "D:\\codex\\2026-11-01\\xian\\work\\multiscale_env"
   },
-  "metrics_computed": false,
-  "ppt_created": false
+  "ppt_created": false,
+  "metrics_computed_during_inference": false,
+  "evaluation": {
+    "metric": "PSNR",
+    "record_project_relative": "MSCNN/data/psnr_run_record.json",
+    "output_directory_project_relative": "Result/evaluation"
+  }
 }

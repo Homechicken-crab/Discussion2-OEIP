@@ -1,4 +1,4 @@
-"""默认生成本方案三项对比；仅MSCNN入口可加--all-methods生成唯一的五项总对比。"""
+"""默认生成本方案三项对比；MSCNN入口加--all-methods生成根目录Result下的五项总对比。"""
 import argparse
 import csv
 import hashlib
@@ -24,19 +24,20 @@ def font(size):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--all-methods', action='store_true')
+    parser.add_argument('--check-only', action='store_true', help='只核对现有对比图，不改写PNG')
     args = parser.parse_args()
-    assert not args.all_methods or BASE.name == 'MSCNN', '总对比仅保存在MSCNN方案中'
+    assert not args.all_methods or BASE.name == 'MSCNN', '总对比由MSCNN入口统一导出到根目录Result'
     chosen = METHODS if args.all_methods else (BASE.name,)
     manifest = json.loads((BASE/'data/samples_manifest.json').read_text(encoding='utf-8'))
-    records = {name: json.loads((PROJECT/name/'result/run_record.json').read_text(encoding='utf-8')) for name in chosen}
+    records = {name: json.loads((PROJECT/name/'data/run_record.json').read_text(encoding='utf-8')) for name in chosen}
     sample_records = {name: {s['id']: s for s in record['samples']} for name, record in records.items()}
     params = {}
     if 'Wiener_Filiter' in chosen:
         with (PROJECT/'Wiener_Filiter/data/parameters.csv').open(encoding='utf-8-sig', newline='') as f:
             params = {r['Sample']:r for r in csv.DictReader(f)}
-    output = BASE/'result/comparison'
+    output = BASE/'result'
     if args.all_methods:
-        output = output/'all_methods'
+        output = PROJECT/'Result/comparison'
     output.mkdir(parents=True, exist_ok=True)
     checks = []
     for sample in manifest['samples']:
@@ -52,7 +53,7 @@ def main():
             assert sha(other/sample['sharp'])==sample['sharp_sha256']
             run = sample_records[method][sid]
             assert run['input_sha256']==sample['blur_gamma_sha256']
-            restored = PROJECT/method/'result/restored'/(sid+'.png')
+            restored = PROJECT/method/'data/restored'/(sid+'.png')
             assert sha(restored)==run['output_sha256']
             paths.append(restored)
             if method == 'Wiener_Filiter':
@@ -73,7 +74,11 @@ def main():
             draw.text((12,top),f'{k+1}. {label}',font=font(28),fill='black')
             canvas.paste(image,(12,top+42))
         overview = output/(sid+'_overview.png')
-        canvas.save(overview)
+        if args.check_only:
+            with Image.open(overview) as saved:
+                assert saved.size==canvas.size and saved.tobytes()==canvas.tobytes(), str(overview)
+        else:
+            canvas.save(overview)
         # 每行一种方法，两列固定ROI。所有方法都先整图复原再从同位置裁取。
         rois = sample['crops_xywh_zero_based']
         assert rois==[[400,180,256,192],[800,400,256,192]]
@@ -90,13 +95,17 @@ def main():
                 patch = image.crop((x,y,x+w,y+h)).resize((w*2,h*2),Image.Resampling.NEAREST)
                 canvas.paste(patch,(left,top+68))
         crops = output/(sid+'_crops.png')
-        canvas.save(crops)
+        if args.check_only:
+            with Image.open(crops) as saved:
+                assert saved.size==canvas.size and saved.tobytes()==canvas.tobytes(), str(crops)
+        else:
+            canvas.save(crops)
         checks.append({'id':sid,'input_sha256':sha(blur),'reference_sha256':sha(sharp),
                        'paired_paths_verified':True,'output_sizes':[1280,720],
                        'rois_xywh_zero_based':rois,'overview_scale':1,'crop_display_scale':2,
                        'methods':list(chosen),'overview_sha256':sha(overview),'crops_sha256':sha(crops)})
-        print('Saved comparisons:',sid,flush=True)
-    record_path = BASE/'result/run_record.json'
+        print('Checked comparisons:' if args.check_only else 'Saved comparisons:',sid,flush=True)
+    record_path = BASE/'data/run_record.json'
     own_record = json.loads(record_path.read_text(encoding='utf-8'))
     own_record['all_methods_comparison' if args.all_methods else 'comparison'] = checks
     record_path.write_text(json.dumps(own_record,ensure_ascii=False,indent=2),encoding='utf-8')

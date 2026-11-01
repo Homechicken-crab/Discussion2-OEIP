@@ -1,0 +1,158 @@
+{
+  "metric": "PSNR",
+  "unit": "dB",
+  "pixel_range": [
+    0,
+    255
+  ],
+  "channels": "RGB",
+  "dtype_for_calculation": "float64",
+  "region": "entire original 1280x720 image, all RGB channels",
+  "formula": "10*log10(255^2/mean((restored-sharp)^2))",
+  "average": "arithmetic mean of six per-image PSNR values; not PSNR from pooled MSE",
+  "border_crop": 0,
+  "alignment": false,
+  "resize": false,
+  "other_metrics": false,
+  "blur_baseline_included": true,
+  "restoration_rerun": false,
+  "source_files": [
+    {
+      "sample": "GOPR0384_11_00_000051",
+      "blur_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "sharp_sha256": "2ac23a58c94d5a5bb4e64d4e4c5792efb23dcef81e1a784d25274f486d51a69f",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0384_11_00_000051.png",
+          "sha256": "00463a0d6ba12728aea60fbf5ef611cb4b8cab4e5ae150e061178fc57fc94df5"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0384_11_00_000051.png",
+          "sha256": "79c3154e99b85a8c5421f03392858aae35b92fba1ea5deb3acf648b2d35dcb93"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0384_11_00_000051.png",
+          "sha256": "b725478d58d4e9d87baefa98a991ac4ab2733b38a1bdbd94e2d8b3f3a403f345"
+        }
+      }
+    },
+    {
+      "sample": "GOPR0384_11_05_004051",
+      "blur_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "sharp_sha256": "c6e8a487008a88fe471f2b89c1040ef1d6262ed49f0686e9c4c6d4220e98c973",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0384_11_05_004051.png",
+          "sha256": "b75abd65e3b7c8a7c2715367080320b60a3a2865acac48fae80e42bd35ba9631"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0384_11_05_004051.png",
+          "sha256": "cadf885b13a6b694a0f5afe48216a6e1fe951b524559985d9dd270e84c6fd1e3"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0384_11_05_004051.png",
+          "sha256": "a67dab3c718b2c090ad995f48c8af5ba01c872f372181310ada872bc5c794052"
+        }
+      }
+    },
+    {
+      "sample": "GOPR0385_11_01_003061",
+      "blur_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "sharp_sha256": "afa745257e8836c51e302d7bdce57ffbc477338fe6f992fc5df1a4fc9097bd34",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0385_11_01_003061.png",
+          "sha256": "c709472454e6aa02da9b0b1f72b4ad35512e6262fdab87bbef3d392827c2c461"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0385_11_01_003061.png",
+          "sha256": "706f74fab896e962644b15275a6f4b3cd1a89bae0320e63aca3a179741060b4d"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0385_11_01_003061.png",
+          "sha256": "44652ddd984c6e8b4794964d4b986b4d481d2051c6c319bfa3e9eec36bbf26b3"
+        }
+      }
+    },
+    {
+      "sample": "GOPR0396_11_00_000051",
+      "blur_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "sharp_sha256": "067a7cccb61cf8862b898ad925334b1a05507e61d2948cc7298fdcd00ff617e8",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0396_11_00_000051.png",
+          "sha256": "e362c33e6932a10bf879ce85179108d940d9f126aa494a4dcdf4f8cf62942592"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0396_11_00_000051.png",
+          "sha256": "9cdd9786f6b20cb840425df765a9190925e6e91c940c5e087c95b27b1ac37c4b"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0396_11_00_000051.png",
+          "sha256": "14a2414485ca9b2ffb702e599b01504188e5ad0e7637d019d6b3eae0cc65a36a"
+        }
+      }
+    },
+    {
+      "sample": "GOPR0410_11_00_000168",
+      "blur_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "sharp_sha256": "5962a977a4c4896642f78532bc20b3e049b385012972d921d6f894c03c5a080c",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0410_11_00_000168.png",
+          "sha256": "d5f8aec84d7d30444edc594f7a81bcd2ca9bec43c4988838722bbd7ba26547ee"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0410_11_00_000168.png",
+          "sha256": "12f405810efea21d7445a17509a2501a9604aa653821de4430049f7191f31b3d"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0410_11_00_000168.png",
+          "sha256": "eb76fe388535e5ddd93abddf366a9159b1147b1f8b7b2a8a6596ef25b0341dbe"
+        }
+      }
+    },
+    {
+      "sample": "GOPR0854_11_00_000051",
+      "blur_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "sharp_sha256": "97d7f5e6b6c601f4f653053f726f88f628bc5254e9fbb97b666efc9562edac4b",
+      "restored": {
+        "Wiener_Filiter": {
+          "path": "Wiener_Filiter/data/restored/GOPR0854_11_00_000051.png",
+          "sha256": "a62eaca408e97c9b81d45f4107dfc2840b2fc5348c17089212ce2cc7b6bcad76"
+        },
+        "MSCNN": {
+          "path": "MSCNN/data/restored/GOPR0854_11_00_000051.png",
+          "sha256": "7b9be2222f443924b92d45fadc21eb2038ec1610b438ec57577b3897871c8802"
+        },
+        "NAFNet": {
+          "path": "NAFNet/data/restored/GOPR0854_11_00_000051.png",
+          "sha256": "a97ec9311fb82ac8c18257adfc649011c319442ff505e9c3fb5da7c0220a7fde"
+        }
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.12.6",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2"
+  },
+  "outputs": {
+    "Result/evaluation/psnr_mean.csv": "7a7a064b4967c879119e61482beb2f2a7686b324ec1177ed331347da8eeb9d8d",
+    "Result/evaluation/psnr_mean.png": "17049ab620d6a3f406ecabc144fd385e8a51cf584d7a71bc2c90667671c0a6ef",
+    "Result/evaluation/psnr_per_image.csv": "a4b51a6399ff05da31077716601da8e84c8f722e98cfbd314658457f86ba2551",
+    "Result/evaluation/psnr_per_image.png": "fd52a43374a8bd90fa7737822cbcd84879ccbc1449b406a3261de62d43db91c8"
+  },
+  "verification": {
+    "independent_implementation": "skimage.metrics.peak_signal_noise_ratio(data_range=255)",
+    "per_image_values_checked": 24,
+    "mean_values_checked": 4,
+    "maximum_csv_rounding_error_dB": 4.952482868247898e-11,
+    "all_original_102_png_sha256_unchanged": true,
+    "visually_inspected_plots": [
+      "Result/evaluation/psnr_per_image.png",
+      "Result/evaluation/psnr_mean.png"
+    ],
+    "comparison_check_only_passed": true
+  }
+}

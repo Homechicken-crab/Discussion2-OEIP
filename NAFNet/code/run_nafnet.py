@@ -14,7 +14,7 @@ from nafnet_model import NAFNet
 
 BASE = Path(__file__).resolve().parent.parent
 DATA = BASE / 'data'
-RESULT = BASE / 'result'
+RESTORED = DATA / 'restored'
 
 
 def sha(path):
@@ -60,7 +60,7 @@ def main():
         record.update(gpu=torch.cuda.get_device_name(), available_gpu_bytes=free, total_gpu_bytes=total)
     del checkpoint_data, state
     model.to(device).eval()
-    output = RESULT / 'restored'
+    output = RESTORED
     output.mkdir(parents=True, exist_ok=True)
     with torch.inference_mode():
         for sample in manifest['samples'][:args.limit]:
@@ -92,7 +92,7 @@ def main():
                 entry['peak_allocated_gpu_bytes'] = torch.cuda.max_memory_allocated()
             record['samples'].append(entry)
             print(sample['id'], json.dumps(entry), flush=True)
-    (RESULT/'run_record.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+    (DATA/'run_record.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
 
 
 if __name__ == '__main__':

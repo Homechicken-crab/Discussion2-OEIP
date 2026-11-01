@@ -10,6 +10,10 @@
 
 数据来自[作者GoPro页面](https://seungjunnah.github.io/Datasets/gopro.html)链接的官方测试集（CC BY4.0）。继续使用既定6对blur_gamma/sharp，无重新挑选。小样本在data/samples，清单、文件哈希和固定0基ROI在data/samples_manifest.json；各方案独立副本逐文件一致。sharp不进入网络。全部原尺寸1280×720，本批不需补边。
 
-新目录下已实际运行6图；输出在result/restored，三项对比在result/comparison。总对比只保存在result/comparison/all_methods，按模糊→维纳→MSCNN→NAFNet→sharp顺序纵向排列整图，原生1倍显示；局部统一2倍最近邻显示，两处固定ROI先整图复原后裁取。result/run_record.json记录实际运行和配对/尺寸核对。无评价指标或PPT。
+已实际运行6图；原尺寸PNG在data/restored，推理记录在data/run_record.json。本方案result中仅保留12张三项对比PNG。总对比集中在项目根目录Result/comparison，按模糊→维纳→MSCNN→NAFNet→sharp顺序纵向排列整图，原生1倍显示；局部统一2倍最近邻显示，两处固定ROI先整图复原后裁取。迁移保留原PNG字节；`make_comparisons.py --check-only` 和 `make_comparisons.py --all-methods --check-only` 可只核对图片而不改写PNG。
 
-权重下载遇Google Drive连接错误时，可手动从同一官方链接取包后核对哈希；本机已有验证通过的权重，不依赖重新下载。当前NAFNet采用同学提供的匹配权重，其训练blur版本来源限制见NAFNet/code/README.md，因此不将少量视觉对比表述为严格统一训练条件下的定量优劣结论。
+PSNR入口：`python code/evaluate_psnr.py`，可从任意工作目录使用脚本完整路径运行。只读取各方案data/restored的既有PNG及同名sharp；全图RGB、峰值255、float64，无裁边/配准/缩放，按 `10*log10(255^2/mean((image-sharp)^2))` 计算。均值为六张图PSNR的算术平均，不是先平均MSE再计算PSNR；另保留Blur_input基线。sharp不用于复原输入、训练或维纳选参。
+
+逐图CSV、均值CSV、逐图比较图和均值比较图唯一保存在项目根目录Result/evaluation，分别为psnr_per_image.csv、psnr_mean.csv、psnr_per_image.png、psnr_mean.png。图表读取正式CSV绘制；来源哈希、计算约定和输出哈希记录在data/psnr_run_record.json。仅新增PSNR，未计算其他指标或制作PPT。
+
+权重下载遇Google Drive连接错误时，可手动从同一官方链接取包后核对哈希；本机已有验证通过的权重，不依赖重新下载。当前NAFNet采用同学提供的匹配权重，其训练blur版本来源限制见同级NAFNet/code/README.md。这些PSNR仅对应固定六图和当前权重，不能单独归因于网络架构优劣。
