@@ -1,0 +1,163 @@
+{
+  "source_page": "https://seungjunnah.github.io/Datasets/gopro.html",
+  "archive_url": "https://huggingface.co/datasets/snah/GOPRO_Large/resolve/main/GOPRO_Large.zip",
+  "license": "CC BY 4.0",
+  "split": "test",
+  "selection_rule": "first six lexicographically sorted test sequences; middle sorted frame (zero-based len//2)",
+  "selection_frozen_before_inference": true,
+  "blur_version": "blur_gamma",
+  "download_method": "HTTP Range ZIP central directory and only 12 selected PNG entries; no full archive or train images",
+  "samples": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "sequence": "GOPR0384_11_00",
+      "filename": "000051.png",
+      "blur_gamma": "samples/GOPR0384_11_00/blur_gamma/000051.png",
+      "blur_gamma_archive_path": "test/GOPR0384_11_00/blur_gamma/000051.png",
+      "sharp": "samples/GOPR0384_11_00/sharp/000051.png",
+      "sharp_archive_path": "test/GOPR0384_11_00/sharp/000051.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "sharp_sha256": "2ac23a58c94d5a5bb4e64d4e4c5792efb23dcef81e1a784d25274f486d51a69f"
+    },
+    {
+      "id": "GOPR0384_11_05_004051",
+      "sequence": "GOPR0384_11_05",
+      "filename": "004051.png",
+      "blur_gamma": "samples/GOPR0384_11_05/blur_gamma/004051.png",
+      "blur_gamma_archive_path": "test/GOPR0384_11_05/blur_gamma/004051.png",
+      "sharp": "samples/GOPR0384_11_05/sharp/004051.png",
+      "sharp_archive_path": "test/GOPR0384_11_05/sharp/004051.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "sharp_sha256": "c6e8a487008a88fe471f2b89c1040ef1d6262ed49f0686e9c4c6d4220e98c973"
+    },
+    {
+      "id": "GOPR0385_11_01_003061",
+      "sequence": "GOPR0385_11_01",
+      "filename": "003061.png",
+      "blur_gamma": "samples/GOPR0385_11_01/blur_gamma/003061.png",
+      "blur_gamma_archive_path": "test/GOPR0385_11_01/blur_gamma/003061.png",
+      "sharp": "samples/GOPR0385_11_01/sharp/003061.png",
+      "sharp_archive_path": "test/GOPR0385_11_01/sharp/003061.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "sharp_sha256": "afa745257e8836c51e302d7bdce57ffbc477338fe6f992fc5df1a4fc9097bd34"
+    },
+    {
+      "id": "GOPR0396_11_00_000051",
+      "sequence": "GOPR0396_11_00",
+      "filename": "000051.png",
+      "blur_gamma": "samples/GOPR0396_11_00/blur_gamma/000051.png",
+      "blur_gamma_archive_path": "test/GOPR0396_11_00/blur_gamma/000051.png",
+      "sharp": "samples/GOPR0396_11_00/sharp/000051.png",
+      "sharp_archive_path": "test/GOPR0396_11_00/sharp/000051.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "sharp_sha256": "067a7cccb61cf8862b898ad925334b1a05507e61d2948cc7298fdcd00ff617e8"
+    },
+    {
+      "id": "GOPR0410_11_00_000168",
+      "sequence": "GOPR0410_11_00",
+      "filename": "000168.png",
+      "blur_gamma": "samples/GOPR0410_11_00/blur_gamma/000168.png",
+      "blur_gamma_archive_path": "test/GOPR0410_11_00/blur_gamma/000168.png",
+      "sharp": "samples/GOPR0410_11_00/sharp/000168.png",
+      "sharp_archive_path": "test/GOPR0410_11_00/sharp/000168.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "sharp_sha256": "5962a977a4c4896642f78532bc20b3e049b385012972d921d6f894c03c5a080c"
+    },
+    {
+      "id": "GOPR0854_11_00_000051",
+      "sequence": "GOPR0854_11_00",
+      "filename": "000051.png",
+      "blur_gamma": "samples/GOPR0854_11_00/blur_gamma/000051.png",
+      "blur_gamma_archive_path": "test/GOPR0854_11_00/blur_gamma/000051.png",
+      "sharp": "samples/GOPR0854_11_00/sharp/000051.png",
+      "sharp_archive_path": "test/GOPR0854_11_00/sharp/000051.png",
+      "crops_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "blur_gamma_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "sharp_sha256": "97d7f5e6b6c601f4f653053f726f88f628bc5254e9fbb97b666efc9562edac4b"
+    }
+  ],
+  "selected_png_bytes": 12944045
+}

@@ -1,4 +1,0 @@
-Candidate,LEN,THETA,NSR,ManualSelectionRole
-control_L1,1,0,0.03,接近无运动核的控制项，不解释为去除拖影
-candidate_A,5,10,0.03,人工选取的折中候选
-candidate_B,9,15,0.03,较强补偿的对照候选

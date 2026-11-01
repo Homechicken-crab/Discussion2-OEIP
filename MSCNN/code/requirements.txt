@@ -1,0 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+numpy==2.5.4
+Pillow==13.0.0
+scikit-image==0.25.2
+requests==2.34.2
+gdown==6.5.1

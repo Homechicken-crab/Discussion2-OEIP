@@ -1,0 +1,45 @@
+{
+  "implementation": "MATLAB im2double + fspecial motion + edgetaper + deconvwnr; per RGB channel; original resolution",
+  "parameter_origin": "unchanged six GoPro parameter sets from commit ef9bfe3194a6402ed56faa2f2477566df185b1bd",
+  "selection": "manually selected using blurred inputs and candidates before sharp references were displayed; no new search this run",
+  "theta_convention": "counterclockwise from horizontal, MATLAB fspecial motion",
+  "selected_parameters_in_manifest_order": [
+    [
+      3,
+      0,
+      0.03
+    ],
+    [
+      5,
+      0,
+      0.03
+    ],
+    [
+      5,
+      15,
+      0.01
+    ],
+    [
+      3,
+      0,
+      0.03
+    ],
+    [
+      5,
+      0,
+      0.03
+    ],
+    [
+      3,
+      45,
+      0.03
+    ]
+  ],
+  "matlab": "R2022a 9.12.0.1884302",
+  "image_processing_toolbox": "11.5",
+  "sources": {
+    "fspecial": "https://www.mathworks.com/help/images/ref/fspecial.html",
+    "edgetaper": "https://www.mathworks.com/help/images/ref/edgetaper.html",
+    "deconvwnr": "https://www.mathworks.com/help/images/ref/deconvwnr.html"
+  }
+}

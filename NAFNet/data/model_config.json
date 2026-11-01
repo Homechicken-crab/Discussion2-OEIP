@@ -1,0 +1,36 @@
+{
+  "network": {
+    "img_channel": 3,
+    "width": 32,
+    "middle_blk_num": 12,
+    "enc_blk_nums": [
+      2,
+      2,
+      4,
+      8
+    ],
+    "dec_blk_nums": [
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "checkpoint": "weights/best.pth",
+  "checkpoint_sha256": "d3c80dc1b533375389c5e0e875c540e7e412fd1f4801a27b3e4906d416ad51da",
+  "model_code_sha256": "34a7b93e809bf235574226bcc349da0281cd056f297749e9e3da6cd6b7b5cd4d",
+  "input": {
+    "channels": "RGB",
+    "range": [
+      0,
+      1
+    ],
+    "blur_variant_this_run": "blur_gamma",
+    "extra_gamma_transform": false,
+    "padding": "model internal zero pad right/bottom to multiple 16; crop original size",
+    "training_blur_variant": "not established from supplied checkpoint or project; dataset.py names blur only"
+  },
+  "precision": "float32",
+  "amp": false,
+  "tf32": false
+}

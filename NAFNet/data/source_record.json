@@ -1,0 +1,46 @@
+{
+  "implementation_used": "supplied group project models/model.py; preserved byte-identically",
+  "original_project": "motion_deblur_project/motion_deblur_project - 副本",
+  "original_weight": "checkpoints/best.pth",
+  "original_code": "models/model.py",
+  "weight_download_url": "not recorded in supplied checkpoint; no new weights downloaded",
+  "checkpoint_sha256": "d3c80dc1b533375389c5e0e875c540e7e412fd1f4801a27b3e4906d416ad51da",
+  "model_code_sha256": "34a7b93e809bf235574226bcc349da0281cd056f297749e9e3da6cd6b7b5cd4d",
+  "strict_load_tensor_count": 664,
+  "parameter_count": 29159715,
+  "original_loader_problem": "models/checkpoint.py unconditionally imports missing models/nafnet.py even for model_state_dict checkpoints",
+  "repair": "new entry imports only unchanged matching models/model.py; does not use missing compact model or partial loading",
+  "official_architecture_reference": "https://github.com/megvii-research/NAFNet",
+  "official_reference_commit": "2b4af71ebe098a92a75910c233a3965a3e93ede4",
+  "official_base_nafnet_same_config_weights_forward_equal_on_32x48": true,
+  "official_current_gopro_preset_not_used": {
+    "width": 32,
+    "enc_blk_nums": [
+      1,
+      1,
+      1,
+      28
+    ],
+    "middle_blk_num": 1,
+    "dec_blk_nums": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "reference_weights_not_substituted": true,
+  "input_setting_evidence": {
+    "infer.py": "TF.to_tensor RGB 0-1; output TF.to_pil_image truncation",
+    "model.py": "internal padding to 16; full-image residual and crop to original dimensions",
+    "dataset.py": "pairs folders named blur and sharp; no blur_gamma provenance recorded"
+  },
+  "training_blur_variant_verified": false,
+  "limitation": "Network numerical input requirements verified. Actual training blur vs blur_gamma provenance is unknown; current comparison intentionally uses identical fixed blur_gamma samples for all methods.",
+  "original_source_sha256": {
+    "infer.py": "bed841c651ce4e7b692c23d60136c4fc7dfb65b00965b95606e428db6896a21b",
+    "models\\checkpoint.py": "fd4c9445adbe3b49db632c89d1c62dc3408b854b1254a2c31aff7b741c28a8c2",
+    "dataset.py": "64e7ab6d2651a4ee41396cbc2431d6e880e08cdde8e8264b596f5bde1e773119",
+    "models\\model.py": "34a7b93e809bf235574226bcc349da0281cd056f297749e9e3da6cd6b7b5cd4d"
+  }
+}

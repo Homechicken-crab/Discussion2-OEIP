@@ -1,7 +1,11 @@
-sources/local/
-data/private/
-work/
-.venv/
-__pycache__/
+**/data/weights/
+**/.venv/
+**/__pycache__/
 *.pyc
+*.asv
+*.zip
+*.whl
+*.pt
+*.pth
+.cache/
 .DS_Store

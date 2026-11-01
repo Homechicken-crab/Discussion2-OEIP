@@ -1,0 +1,292 @@
+{
+  "method": "Wiener",
+  "matlab": "9.12.0.1884302 (R2022a)",
+  "toolbox": {
+    "Name": "Image Processing Toolbox",
+    "Version": "11.5",
+    "Release": "(R2022a)",
+    "Date": "13-Nov-2021"
+  },
+  "references_used_for_parameter_selection": false,
+  "pipeline": "im2double; fspecial motion; RGB edgetaper/deconvwnr; clamp [0,1]; original resolution",
+  "samples": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "width": 1280,
+      "height": 720,
+      "LEN": 3,
+      "THETA": 0,
+      "NSR": 0.03,
+      "input_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "output_sha256": "00463a0d6ba12728aea60fbf5ef611cb4b8cab4e5ae150e061178fc57fc94df5",
+      "processing_seconds_including_png": 1.2347227
+    },
+    {
+      "id": "GOPR0384_11_05_004051",
+      "width": 1280,
+      "height": 720,
+      "LEN": 5,
+      "THETA": 0,
+      "NSR": 0.03,
+      "input_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "output_sha256": "b75abd65e3b7c8a7c2715367080320b60a3a2865acac48fae80e42bd35ba9631",
+      "processing_seconds_including_png": 0.9533039
+    },
+    {
+      "id": "GOPR0385_11_01_003061",
+      "width": 1280,
+      "height": 720,
+      "LEN": 5,
+      "THETA": 15,
+      "NSR": 0.01,
+      "input_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "output_sha256": "c709472454e6aa02da9b0b1f72b4ad35512e6262fdab87bbef3d392827c2c461",
+      "processing_seconds_including_png": 1.0223639
+    },
+    {
+      "id": "GOPR0396_11_00_000051",
+      "width": 1280,
+      "height": 720,
+      "LEN": 3,
+      "THETA": 0,
+      "NSR": 0.03,
+      "input_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "output_sha256": "e362c33e6932a10bf879ce85179108d940d9f126aa494a4dcdf4f8cf62942592",
+      "processing_seconds_including_png": 0.7455388
+    },
+    {
+      "id": "GOPR0410_11_00_000168",
+      "width": 1280,
+      "height": 720,
+      "LEN": 5,
+      "THETA": 0,
+      "NSR": 0.03,
+      "input_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "output_sha256": "d5f8aec84d7d30444edc594f7a81bcd2ca9bec43c4988838722bbd7ba26547ee",
+      "processing_seconds_including_png": 1.0315616
+    },
+    {
+      "id": "GOPR0854_11_00_000051",
+      "width": 1280,
+      "height": 720,
+      "LEN": 3,
+      "THETA": 45,
+      "NSR": 0.03,
+      "input_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "output_sha256": "a62eaca408e97c9b81d45f4107dfc2840b2fc5348c17089212ce2cc7b6bcad76",
+      "processing_seconds_including_png": 0.9408048
+    }
+  ],
+  "comparison": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "input_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "reference_sha256": "2ac23a58c94d5a5bb4e64d4e4c5792efb23dcef81e1a784d25274f486d51a69f",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "bd0b58c7b4b5ae1ab0c075072749188380dcf9dbee7401a27b5df8591bfde854",
+      "crops_sha256": "8f8afea4952a9f8273647c9effafde716f014a6b60ab27cb81f8004a08a08ad0"
+    },
+    {
+      "id": "GOPR0384_11_05_004051",
+      "input_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "reference_sha256": "c6e8a487008a88fe471f2b89c1040ef1d6262ed49f0686e9c4c6d4220e98c973",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "ada313dcc91f4946ccbd9473a18f98c9ae226d0a06b4c59c78f0cab301f0e116",
+      "crops_sha256": "dde8ffea2818616da631580dcfe52cb19552a0ae8d16463fe9c5403b0c3ca6b2"
+    },
+    {
+      "id": "GOPR0385_11_01_003061",
+      "input_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "reference_sha256": "afa745257e8836c51e302d7bdce57ffbc477338fe6f992fc5df1a4fc9097bd34",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "75bd8756a7ac04bc17bd2e459e9ff37d90fb34288d64a9e574315267837f5d30",
+      "crops_sha256": "041983121a923fdb3b1c0a6fbc15010f8bcdb320e0564952cdcdea5b9d75ef3b"
+    },
+    {
+      "id": "GOPR0396_11_00_000051",
+      "input_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "reference_sha256": "067a7cccb61cf8862b898ad925334b1a05507e61d2948cc7298fdcd00ff617e8",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "a7fe45d2e33c5b84f2db9d940c5e255e5007e32aa0609e30c8ef4a3631676dcc",
+      "crops_sha256": "f24c8e6337ad25b34f52fe3bef414a77ec7e10fc93cab1d9cea92cae7e60bffb"
+    },
+    {
+      "id": "GOPR0410_11_00_000168",
+      "input_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "reference_sha256": "5962a977a4c4896642f78532bc20b3e049b385012972d921d6f894c03c5a080c",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "897692a0eaea8ab9c7997e364aefaa51d1cccb87ca775505270d9baf263bc4f1",
+      "crops_sha256": "360c8c3b3b25a7ac580f9595b26fc595f0808975c54cd0e3a9c87a858ff47d2d"
+    },
+    {
+      "id": "GOPR0854_11_00_000051",
+      "input_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "reference_sha256": "97d7f5e6b6c601f4f653053f726f88f628bc5254e9fbb97b666efc9562edac4b",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "Wiener_Filiter"
+      ],
+      "overview_sha256": "5a0c9f875e6220faa4cbbb3c11a8f982fe7c574271c27e35f4bc8305aea0054e",
+      "crops_sha256": "4c44b1ee2532e6639e67a13b54387484f53d2e59579e345e62b18129477fca98"
+    }
+  ],
+  "verification": {
+    "paired_samples_and_all_three_copies_sha256_match": true,
+    "six_outputs_1280x720_RGB": true,
+    "own_comparison_panels_exact_pixel_equality_checked": 18,
+    "own_fixed_crop_panels_exact_pixel_equality_checked": 36,
+    "old_four_images_absent": true
+  },
+  "observation": "已查看全部六组总对比整图及固定局部。保守参数只作有限补偿，仍有条纹、颗粒或重影；未重新搜索参数。",
+  "own_comparison_visually_inspected": [
+    "GOPR0384_11_00_000051_crops.png"
+  ],
+  "python_environment": {
+    "python": "3.12.6",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.4",
+    "Pillow": "13.0.0",
+    "scikit-image": "0.25.2",
+    "cuda_runtime": "12.8",
+    "driver": "596.49",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "execution_environment": "D:\\codex\\2026-11-01\\xian\\work\\multiscale_env"
+  },
+  "metrics_computed": false,
+  "ppt_created": false
+}

@@ -1,7 +1,6 @@
 * text=auto eol=lf
-*.pdf binary
 *.png binary
-*.npy binary
-# 保留作者来源文件，包括有意保留的末尾空行和训练参数空值。
-MultiScale_CNN/official_model/** -whitespace
-MultiScale_CNN/official_training_args.txt -text -whitespace
+# 保留来源文件的空行与原始参数文本。
+MSCNN/code/official_model/** -whitespace
+MSCNN/data/official_training_args.txt -text -whitespace
+NAFNet/code/nafnet_model.py -text -whitespace

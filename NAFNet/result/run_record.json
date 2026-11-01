@@ -1,0 +1,352 @@
+{
+  "method": "NAFNet",
+  "python": "3.12.6",
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8",
+  "device": "cuda",
+  "checkpoint_sha256": "d3c80dc1b533375389c5e0e875c540e7e412fd1f4801a27b3e4906d416ad51da",
+  "model_code_sha256": "34a7b93e809bf235574226bcc349da0281cd056f297749e9e3da6cd6b7b5cd4d",
+  "generator_strict_load": true,
+  "loaded_tensor_count": 664,
+  "parameter_count": 29159715,
+  "configuration": {
+    "network": {
+      "img_channel": 3,
+      "width": 32,
+      "middle_blk_num": 12,
+      "enc_blk_nums": [
+        2,
+        2,
+        4,
+        8
+      ],
+      "dec_blk_nums": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "checkpoint": "weights/best.pth",
+    "checkpoint_sha256": "d3c80dc1b533375389c5e0e875c540e7e412fd1f4801a27b3e4906d416ad51da",
+    "model_code_sha256": "34a7b93e809bf235574226bcc349da0281cd056f297749e9e3da6cd6b7b5cd4d",
+    "input": {
+      "channels": "RGB",
+      "range": [
+        0,
+        1
+      ],
+      "blur_variant_this_run": "blur_gamma",
+      "extra_gamma_transform": false,
+      "padding": "model internal zero pad right/bottom to multiple 16; crop original size",
+      "training_blur_variant": "not established from supplied checkpoint or project; dataset.py names blur only"
+    },
+    "precision": "float32",
+    "amp": false,
+    "tf32": false
+  },
+  "reference_images_read_by_inference": false,
+  "trained_this_run": false,
+  "precision": "float32",
+  "samples": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "input_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "output_sha256": "b725478d58d4e9d87baefa98a991ac4ab2733b38a1bdbd94e2d8b3f3a403f345",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 1.3963835999602452,
+      "processing_seconds_including_png": 1.8664515999844298,
+      "peak_allocated_gpu_bytes": 1197257728
+    },
+    {
+      "id": "GOPR0384_11_05_004051",
+      "input_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "output_sha256": "a67dab3c718b2c090ad995f48c8af5ba01c872f372181310ada872bc5c794052",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 0.7978552998974919,
+      "processing_seconds_including_png": 1.0224592000013217,
+      "peak_allocated_gpu_bytes": 1208316928
+    },
+    {
+      "id": "GOPR0385_11_01_003061",
+      "input_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "output_sha256": "44652ddd984c6e8b4794964d4b986b4d481d2051c6c319bfa3e9eec36bbf26b3",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 0.7913482999429107,
+      "processing_seconds_including_png": 0.9884481999324635,
+      "peak_allocated_gpu_bytes": 1207268352
+    },
+    {
+      "id": "GOPR0396_11_00_000051",
+      "input_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "output_sha256": "14a2414485ca9b2ffb702e599b01504188e5ad0e7637d019d6b3eae0cc65a36a",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 0.7926988999824971,
+      "processing_seconds_including_png": 0.9671301000053063,
+      "peak_allocated_gpu_bytes": 1206219776
+    },
+    {
+      "id": "GOPR0410_11_00_000168",
+      "input_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "output_sha256": "eb76fe388535e5ddd93abddf366a9159b1147b1f8b7b2a8a6596ef25b0341dbe",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 0.7927851999411359,
+      "processing_seconds_including_png": 0.9848457999760285,
+      "peak_allocated_gpu_bytes": 1207268352
+    },
+    {
+      "id": "GOPR0854_11_00_000051",
+      "input_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "output_sha256": "a97ec9311fb82ac8c18257adfc649011c319442ff505e9c3fb5da7c0220a7fde",
+      "width": 1280,
+      "height": 720,
+      "padding_bottom_right": [
+        0,
+        0
+      ],
+      "forward_seconds": 0.7947431999491528,
+      "processing_seconds_including_png": 0.9817614998901263,
+      "peak_allocated_gpu_bytes": 1208316928
+    }
+  ],
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "available_gpu_bytes": 7451181056,
+  "total_gpu_bytes": 8585216000,
+  "comparison": [
+    {
+      "id": "GOPR0384_11_00_000051",
+      "input_sha256": "7772d1d8fd835c34bc6447c32c1095d177c922aa75814446191aa1aec7018b58",
+      "reference_sha256": "2ac23a58c94d5a5bb4e64d4e4c5792efb23dcef81e1a784d25274f486d51a69f",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "0a04b18b0dea20b4642652d8ed0783a82a41a59263243385959adb3d750cfcfb",
+      "crops_sha256": "c08c7ea7efcd60edf548057ee161333d01fe6f2bb6e087e0e8e52b50645d31d4"
+    },
+    {
+      "id": "GOPR0384_11_05_004051",
+      "input_sha256": "938401d8ebee226ed1977b9e85c65cca2cf32094d080a3bbb68148628d13467c",
+      "reference_sha256": "c6e8a487008a88fe471f2b89c1040ef1d6262ed49f0686e9c4c6d4220e98c973",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "1ac2ccc1a1262dbb9dea2d49f47a2b7321fe6d8ca454cb69d4708c461587ac00",
+      "crops_sha256": "661068ad19f96ea0531b9ae26f13bb7f8329c269bc47d6d33445d82ed74ef9d6"
+    },
+    {
+      "id": "GOPR0385_11_01_003061",
+      "input_sha256": "36ecdbe048ddebdc2e041c2ed0142415f788e5a5f60ed8cee64e63eca718ce74",
+      "reference_sha256": "afa745257e8836c51e302d7bdce57ffbc477338fe6f992fc5df1a4fc9097bd34",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "226f7cddff50eb43844bfd5ae9e454e89a55aa7ebe9da64279ef8c6b30ef7170",
+      "crops_sha256": "8e05a1dfa8db0e7ee9671bb9326ada003b4d2b98f1f726fecc13731b384473eb"
+    },
+    {
+      "id": "GOPR0396_11_00_000051",
+      "input_sha256": "14f223623d126d9f114d5d8f2cd711074b7b68e9da64a0184ee7e13311109f7a",
+      "reference_sha256": "067a7cccb61cf8862b898ad925334b1a05507e61d2948cc7298fdcd00ff617e8",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "4db2d94d8eb866843d2979dd8fd0576fad10899369718a7ec368669d4eed7f18",
+      "crops_sha256": "224cf3cb026c0dd01ffcfbe7ca63b281605a47186d57372c8a11ecffdb5b795f"
+    },
+    {
+      "id": "GOPR0410_11_00_000168",
+      "input_sha256": "3af3c73f25aa5a2debd9c2122187db09b95fabf3cc1ba13b2f4bcd66bd5b6e1b",
+      "reference_sha256": "5962a977a4c4896642f78532bc20b3e049b385012972d921d6f894c03c5a080c",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "6b720f88b34abee389e25a41aaac7c5c4d3fe74af220b7b5ad3f2a403d0bc6da",
+      "crops_sha256": "628516564d2b751d23534acbdfbe5c1b43e8146fe93142b13979917d7b9ea001"
+    },
+    {
+      "id": "GOPR0854_11_00_000051",
+      "input_sha256": "13d6969a26266234cbdd4923e9df2d5ce0c583c4391cbac837a55cd0a795f40b",
+      "reference_sha256": "97d7f5e6b6c601f4f653053f726f88f628bc5254e9fbb97b666efc9562edac4b",
+      "paired_paths_verified": true,
+      "output_sizes": [
+        1280,
+        720
+      ],
+      "rois_xywh_zero_based": [
+        [
+          400,
+          180,
+          256,
+          192
+        ],
+        [
+          800,
+          400,
+          256,
+          192
+        ]
+      ],
+      "overview_scale": 1,
+      "crop_display_scale": 2,
+      "methods": [
+        "NAFNet"
+      ],
+      "overview_sha256": "ee804b7963a5de8724857cb526f09d63e6da822357d8fe5de4b82f9556313188",
+      "crops_sha256": "077c1ada0dc73ac49212246cb112d8b4dd97f3a512c5f7970de7f2f2e4902dbb"
+    }
+  ],
+  "verification": {
+    "paired_samples_and_all_three_copies_sha256_match": true,
+    "six_outputs_1280x720_RGB": true,
+    "own_comparison_panels_exact_pixel_equality_checked": 18,
+    "own_fixed_crop_panels_exact_pixel_equality_checked": 36,
+    "old_four_images_absent": true
+  },
+  "observation": "已查看全部六组总对比整图及固定局部。人物、建筑与车尾结构有改善，细小文字、树皮和路面仍有残余模糊、平滑或不规则纹理。原权重训练blur版本未能由现有来源确定。",
+  "own_comparison_visually_inspected": [
+    "GOPR0384_11_00_000051_crops.png"
+  ],
+  "python_environment": {
+    "python": "3.12.6",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.4",
+    "Pillow": "13.0.0",
+    "scikit-image": "0.25.2",
+    "cuda_runtime": "12.8",
+    "driver": "596.49",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "execution_environment": "D:\\codex\\2026-11-01\\xian\\work\\multiscale_env"
+  },
+  "metrics_computed": false,
+  "ppt_created": false
+}
