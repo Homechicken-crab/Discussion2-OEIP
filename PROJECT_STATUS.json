@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-01",
+  "stage": "preparation_and_method_discussion",
+  "input_mode": "one_existing_motion_blurred_image_no_photography_required",
+  "actual_input_received": false,
+  "course_notes_prepared": true,
+  "proposed_main_method": "manually_assisted_motion_PSF_estimation_and_constant_K_Wiener_deconvolution",
+  "baseline": "threshold_truncated_inverse_filter",
+  "formal_experiments_run": false,
+  "formal_metrics_available": false,
+  "final_ppt_created": false,
+  "next_step": "Guiding GPT reviews the plan; inspect the actual image when supplied before choosing ROI and parameter ranges."
+}

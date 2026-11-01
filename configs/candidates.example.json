@@ -1,0 +1,11 @@
+{
+  "status": "example_only_not_estimated_from_an_input",
+  "length_unit": "pixels_in_exif_oriented_unscaled_processing_image",
+  "angle_convention": "0=rightward_horizontal; positive=clockwise; direction_axis_modulo_180",
+  "lengths": [9, 17, 25, 33],
+  "angles": [-5, 0, 5],
+  "ks": [0.001, 0.003, 0.01],
+  "pad": 64,
+  "linear_light": true,
+  "note": "No image has been supplied. Revise this range after inspecting the actual input; do not treat these values as known PSF parameters."
+}

@@ -1,0 +1,7 @@
+sources/local/
+data/private/
+work/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
