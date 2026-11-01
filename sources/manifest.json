@@ -2,12 +2,12 @@
   "status": "user_provided_sources",
   "sources": [
     {
-      "path": "sources/courseware/第五章 图像复原.pdf",
+      "path": "sources/courseware/chapter05_image_restoration.pdf",
       "bytes": 6539293,
       "sha256": "c28558e4ea7aa8b0ad9d774250b02b88cf3aab1b6d451349d9adabe4f8a7aebb"
     },
     {
-      "path": "sources/courseware/第四章 图像变换及应用.pdf",
+      "path": "sources/courseware/chapter04_image_transforms.pdf",
       "bytes": 12079657,
       "sha256": "02a7a9861048ec718051f72591465a4fb837a2eb186a22e20a60239578ff261e"
     },

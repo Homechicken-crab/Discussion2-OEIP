@@ -1,6 +1,6 @@
 # 当前 MATLAB 实施说明
 
-正式入口为 维纳滤波 中的两个独立脚本。已在本机 MATLAB R2022a + Image Processing Toolbox 11.5 实际使用。早期 src/deblur.py 仅为历史准备代码，不是当前实验入口。
+正式入口为 Wiener_Filter 中的两个独立脚本。已在本机 MATLAB R2022a + Image Processing Toolbox 11.5 实际使用。早期 src/deblur.py 仅为历史准备代码，不是当前实验入口。
 
 ## wiener_restore.m
 

@@ -41,13 +41,13 @@ python make_comparisons.py
 
 权重首次已成功从官方链接下载并完成推理；之后额外检查重新下载时遇到过Google Drive的TLS EOF连接错误。当前本机权重已验证，不受影响，下载脚本会优先复用已验证文件；新机器若遇此网络错误需重试，或从上方官方链接手动下载同一包并核对哈希。
 
-MATLAB R2022a + Image Processing Toolbox 11.5：打开同级 `维纳滤波/wiener_gopro.m` 直接运行（默认restore），输出在 `维纳滤波/results_gopro/`。两个方案读取 samples 下完全相同的 blur_gamma 文件；sharp 只在配对检查和对比图脚本读取。维纳选参时尚未展示sharp：固定方向分别0、0、15、0、0、45度，每图仅试LEN=3/5/9与NSR=0.01/0.03的6组，共36组；人工检查两个固定局部后选择上述折中参数，无自动评分。候选留在维纳项目temp_candidates/gopro，忽略不提交。
+MATLAB R2022a + Image Processing Toolbox 11.5：打开同级 `Wiener_Filter/wiener_gopro.m` 直接运行（默认restore），输出在 `Wiener_Filter/results_gopro/`。两个方案读取 samples 下完全相同的 blur_gamma 文件；sharp 只在配对检查和对比图脚本读取。维纳选参时尚未展示sharp：固定方向分别0、0、15、0、0、45度，每图仅试LEN=3/5/9与NSR=0.01/0.03的6组，共36组；人工检查两个固定局部后选择上述折中参数，无自动评分。候选留在维纳项目temp_candidates/gopro，忽略不提交。
 
 ## 已执行与结果
 
 先单张成功，再批量6张。单张网络前向3.58秒；批量每张前向3.13–3.67秒，含预处理和PNG保存3.39–4.03秒；首次模型导入/加载时间不计入上述单图计时。峰值为PyTorch已分配显存约0.83 GB，非整机全部显存。实际记录见 results/inference_single.json、inference_run.json。
 
-- CNN原尺寸PNG：results/cnn/；维纳原尺寸PNG及独立参数表：同级维纳滤波/results_gopro/。全部1280×720 RGB；本批尺寸可被4整除，无需补边。其他尺寸先按作者右侧/下侧复制边缘补至4的倍数，推理后裁回，不缩小输入。
+- CNN原尺寸PNG：results/cnn/；维纳原尺寸PNG及独立参数表：同级Wiener_Filter/results_gopro/。全部1280×720 RGB；本批尺寸可被4整除，无需补边。其他尺寸先按作者右侧/下侧复制边缘补至4的倍数，推理后裁回，不缩小输入。
 - 四项整体和局部对比：results/comparisons/，共12张。整体统一0.5倍；局部统一2倍最近邻显示。每张图的两处ROI均在推理前固定为0基 `[400,180,256,192]`、`[800,400,256,192]`，四方法位置/尺度相同；复原整图之后裁局部。
 - 已实际查看全部6张整体对比及6张局部对比，配对/尺寸/输入哈希检查记录在 results/pairing_and_output_checks.json。没有PSNR、SSIM、NIQE等本轮评价指标，没有PPT。
 

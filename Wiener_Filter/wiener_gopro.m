@@ -1,7 +1,7 @@
 %% 1. GoPro固定6样本；不覆盖原4图参数和分轮结果
 clear; clc;
 root = fileparts(mfilename('fullpath'));
-cnn = fullfile(fileparts(root),'多尺度CNN');
+cnn = fullfile(fileparts(root),'MultiScale_CNN');
 mode = 'restore';                    % 'preview' 少量候选；'restore' 正式输出
 M = jsondecode(fileread(fullfile(cnn,'samples_manifest.json')));
 % 只根据模糊输入及候选人工选择，不读取sharp，不自动计算分数。

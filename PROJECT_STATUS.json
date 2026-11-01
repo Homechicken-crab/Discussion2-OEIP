@@ -9,17 +9,17 @@
   "formal_experiments_run": true,
   "formal_metrics_available": false,
   "final_ppt_created": false,
-  "round2_output": "维纳滤波/results_round2_image3",
+  "round2_output": "Wiener_Filter/results_round2_image3",
   "synthetic_validation_run": false,
   "round2_consistency_checks_passed": true,
   "round2_coarse_evaluations": 194,
   "round2_fine_evaluations": 75,
   "round2_unique_parameter_triplets": 257,
-  "round2_observations": "维纳滤波/results_round2_image3/observations.md",
+  "round2_observations": "Wiener_Filter/results_round2_image3/observations.md",
   "next_step": "Review saved visual comparisons; no metrics or PPT executed",
   "active_implementations": [
-    "维纳滤波",
-    "多尺度CNN"
+    "Wiener_Filter",
+    "MultiScale_CNN"
   ],
   "gopro_fixed_test_pairs": 6,
   "gopro_blur_version": "blur_gamma",
@@ -28,6 +28,6 @@
   "cnn_trained_by_group": false,
   "nafnet_model_touched_or_rerun": false,
   "gopro_wiener_completed": true,
-  "cnn_output": "多尺度CNN/results",
-  "gopro_wiener_output": "维纳滤波/results_gopro"
+  "cnn_output": "MultiScale_CNN/results",
+  "gopro_wiener_output": "Wiener_Filter/results_gopro"
 }

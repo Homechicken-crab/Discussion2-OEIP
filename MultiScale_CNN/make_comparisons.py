@@ -7,7 +7,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
-WIENER = ROOT.parent / '维纳滤波'
+WIENER = ROOT.parent / 'Wiener_Filter'
 
 
 def sha(path):
